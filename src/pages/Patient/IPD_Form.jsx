@@ -79,7 +79,7 @@ return(
       <form className="items-stretch w-[1100px] bg-slate-50 flex flex-col pt-5 pb-12 px-8 max-md:px-5" onSubmit={handleSubmit}>
       <div className="items-stretch bg-white flex flex-col justify-center py-1.5 max-md:max-w-full">
         <div className="flex flex-col justify-center pl-7 pr-16 py-2 items-start max-md:max-w-full max-md:px-5">
-          <div className="backdrop-blur-[5px]  flex   max-w-full items-stretch justify-between gap-5 pl-4 pr-1 py-1.5 rounded-xl">
+          <div className="backdrop-blur-[5px]  flex   max-w-full items-stretch justify-between gap-5 pl-4 pr-1 py-1.5  bg-slate-500 rounded-xl">
             <input className=" text-gray-500 border-transparent text-base font-medium leading-4 whitespace-nowrap bg-slate-100 justify-center mt-3 pl-4 pr-16 py-4 w-[500px] rounded-md items-start max-md:max-w-full max-md:pr-5"     type="text"
                 placeholder="Search by name or ID"
                  value={searchQuery}

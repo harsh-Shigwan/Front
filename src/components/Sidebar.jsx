@@ -13,6 +13,7 @@ import { FaBookMedical } from "react-icons/fa6";
 import { AiFillAppstore } from "react-icons/ai";
 import { FaWindowRestore } from "react-icons/fa6";
 import { FaCalendarPlus } from "react-icons/fa";
+import { VscAccount } from "react-icons/vsc";
 const routes = [
   {
     path: "/",
@@ -68,7 +69,11 @@ const routes = [
     path: "/Pharmacy",
     name: "Pharmacy",
     icon: <FaCalendarPlus />,
-  },
+  },{
+    path: "/Accounts",
+    name: "Accounts",
+    icon: <VscAccount/>,
+  }
 ];
 const Sidebar = ({ children }) => {
   const [isOpen, setIsOpen] = useState(true);

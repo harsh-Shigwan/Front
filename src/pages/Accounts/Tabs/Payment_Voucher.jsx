@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
-import Plus from "../../Data/Plus.png";
-import download from "../../Data/download.png";
-import search from "../../Data/search.png";
-import edit from "../../Data/edit.png";
+import Plus from "../../../Data/Plus.png";
+import download from "../../../Data/download.png";
+import search from "../../../Data/search.png";
+import edit from "../../../Data/edit.png";
 
 import generatePDF from "react-to-pdf";
 import {
@@ -23,8 +23,8 @@ import {
 } from "@mui/material";
 
 import { Link, useNavigate } from "react-router-dom";
-import Breadcrumb from "../../components/Breadcrumb";
-const Patient_Detail = () => {
+import Breadcrumb from "../../../components/Breadcrumb";
+const   Payment_Voucher = () => {
   const API = "http://127.0.0.1:8000/api/patient/api/patients/";
   const [myData, setMyData] = useState([]);
   const [isError, setIsError] = useState("");
@@ -66,8 +66,8 @@ const Patient_Detail = () => {
   //const urlName = user.FirstName.replace(/\s+/g, "-").toLowerCase();
   return (
     <div>
-      <Breadcrumb></Breadcrumb>
-      <div className="w-[1000px] ml-[70px] mt-0 relative bg-whitesmoke h-[984px] flex flex-col items-center justify-start pt-0 px-[30px] pb-[30px] box-border text-left text-xs text-f2d3d font-table-body-heading">
+      
+      <div className="w-[950px] ml-[70px] mt-0 relative bg-whitesmoke h-[984px] flex flex-col items-center justify-start pt-0 px-[30px] pb-[30px] box-border text-left text-xs text-f2d3d font-table-body-heading">
         <div className="flex flex-col items-center justify-start pt-5 px-0 pb-0">
           <div className="h-[692px] flex flex-col items-start justify-start">
             <div className="w-[1110px] relative bg-theme-white-default h-[692px] overflow-hidden shrink-0">
@@ -75,7 +75,7 @@ const Patient_Detail = () => {
                 <div className="self-stretch relative h-[60px] overflow-hidden shrink-0">
                   <div className="absolute w-full top-[60px] right-[0px] left-[0px] bg-gray-200 box-border h-0 border-t-[1px] border-solid border-border-light" />
                   <div className="absolute top-[18px] left-[22px] text-[20px] leading-[24px] font-medium">
-                    Patients
+                  Payment Voucher
                   </div>
                   <input className="absolute top-[11px] left-[588px] rounded-[30px] bg-theme-white-default box-border w-[161px] h-[38px] border-[1px] border-solid border-black pl-5"  defaultValue={searh} onChange={(e)=>{ setSearch(e.target.value)}}/>
                   <div className="absolute top-[18px] left-[600px] h-[23.75px] flex flex-row  ml-28 items-start justify-start">
@@ -85,20 +85,16 @@ const Patient_Detail = () => {
                       src={search}
                     />
                   </div>
-
-                  <button
-                    className="absolute top-[11px] left-[937px] rounded-md bg-theme-primary-dark w-[156px] flex flex-col items-start justify-start py-2.5 px-5  h-10 box-border text-theme-white-default"
-                    onClick={handle}
-                  >
-                    <div className="w-24 my-0 mx-[!important] absolute top-[10px] left-[30px] flex flex-row items-center justify-start gap-[8px] z-[0]">
-                      <img
-                        className="w-5 relative h-5 object-cover"
-                        alt=""
-                        src={Plus}
-                      />
-                      <div className="relative font-semibold">Add Patient</div>
-                    </div>
-                  </button>
+                  <button className=" absolute flex flex-col justify-center px-5 py-2.5 text-xs font-semibold text-white whitespace-nowrap bg-blue-700 rounded-md max-w-[171px] left-[940px] mt-[10px] ">
+                  <div className="flex gap-2 justify-between">
+                    <img
+                      loading="lazy"
+                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/edccc43e4d81938a4e7fd8dc2e0109881995c16b6196bfcea8d14460e252379f?apiKey=8d6992485656477797592f8415f51272&"
+                      className="w-5 aspect-square"
+                    />
+                    <div className="grow">Add new Voucher</div>
+                  </div>
+                </button>
                   <button
                     className="absolute top-[11px] left-[765px] rounded-md  h-10 bg-theme-white-default box-border w-[156px] flex flex-col items-start justify-start py-2.5 px-5 text-theme-primary-dark border-[1px] border-solid border-theme-primary-dark"
                     onClick={() =>
@@ -144,7 +140,7 @@ const Patient_Detail = () => {
                             .map((user) => (
                               <TableRow key={user.PatientID}>
                                 <TableCell>{user.PatientID}</TableCell>
-                                <TableCell>{user.fullname} </TableCell>
+                                <TableCell>{user.FirstName} </TableCell>
                                 <TableCell>{user.Gender}</TableCell>
                                 <TableCell>{user.blood}</TableCell>
                                 <TableCell>{user.DOB}</TableCell>
@@ -200,4 +196,4 @@ const Patient_Detail = () => {
   );
 };
 
-export default Patient_Detail;
+export default  Payment_Voucher;

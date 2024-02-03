@@ -7,7 +7,12 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import Tab1 from './Tabs/Tab1';
+
+import Over_View from './Tabs/Over_View';
+import Visit from './Tabs/Visit';
+import Treatment_History from './Tabs/Treatment_History';
+import Lab_Investigation from './Tabs/Lab_Investigation';
+import Billing from './Tabs/Billing';
 
 
 function CustomTabPanel(props) {
@@ -54,27 +59,31 @@ const Patient_Profile = () => {
   return (
     <div><Breadcrumb></Breadcrumb>
     <Box sx={{ width: '100%' }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+      <Box sx={{ borderBottom: 1, borderColor: '' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="Over View" {...a11yProps(0)} />
           <Tab label="Visit" {...a11yProps(1)} />
           <Tab label="Tretment History" {...a11yProps(2)} />
-          <Tab label="Tretment History" {...a11yProps(3)} />
-          <Tab label="Lab Investigation" {...a11yProps(4)} />
-          <Tab label="Billing" {...a11yProps(5)} />
-          <Tab label="Document Details" {...a11yProps(6)} />
+        
+          <Tab label="Lab Investigation" {...a11yProps(3)} />
+          <Tab label="Billing" {...a11yProps(4)} />
+          <Tab label="Document Details" {...a11yProps(5)} />
          
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-        <Tab1></Tab1>
+     <Over_View/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        Item Two
+        <Visit/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-        Item Three
+        <Treatment_History/>
       </CustomTabPanel>
+      <customElements value={value} index={3}>
+      <Lab_Investigation/></customElements>
+      <customElements value={value} index={4}>
+      <Billing/></customElements>
     </Box>
     
     </div>

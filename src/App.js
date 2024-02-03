@@ -4,8 +4,8 @@ import { BrowserRouter as Router , Routes , Route} from "react-router-dom"
 import Patient from './pages/Patient';
 import Appointment from './pages/Appointment';
 import Doctor from './pages/Doctor/Doctor';
-import Inventory from './pages/Inventory';
-import Pharmacy from './pages/Pharmacy';
+import Inventory from './pages/Inventory/Inventory';
+import Pharmacy from './pages/Pharmacy/Pharmacy';
 import Sidebar from './components/Sidebar';
 import Report from './pages/Report';
 import OPD from './pages/Patient/OPD';
@@ -21,6 +21,15 @@ import Records from './pages/Records/Records';
 import RecordsPage2 from './pages/Records/RecordsPage2';
 import IPD_Form from './pages/Patient/IPD_Form';
 import Home from './pages/Patient/Home';
+import Add_Records from './pages/Pharmacy/Add_Records';
+import Medicines from './pages/Pharmacy/Medicines';
+import Add_Medicines from './pages/Pharmacy/Add_Medicines';
+import Add_Medicine_Inventory from './pages/Inventory/Add_Medicine_Inventory';
+import Equipment from './pages/Inventory/Equipment';
+import Add_Equipment from './pages/Inventory/Add_Equipment';
+import Accounts from './pages/Accounts/Accounts';
+import Account_Profile from './pages/Accounts/Account_Profile';
+//import Medicine from './pages/Pharmacy/Medicine';
 const App = () => {
 
   return (
@@ -32,6 +41,9 @@ const App = () => {
             <Route path="/Appointment" element={<Appointment />}></Route>
             <Route path="/Doctor" element={<Doctor />}></Route>
             <Route path="/Inventory" element={<Inventory />}></Route>
+            <Route path="/Inventory/Equipment" element={<Equipment />}></Route>
+            <Route path="/Inventory/Equipment/Add_Equipment" element={<Add_Equipment/>}></Route>
+            <Route path="/Inventory/Add_Medicine_Inventory" element={<Add_Medicine_Inventory />}></Route>
             <Route path="/Pharmacy" element={<Pharmacy />}></Route>
             <Route path="/Report" element={<Report />}></Route>
             <Route path="/Patient/OPD" element={<OPD />}></Route>
@@ -45,6 +57,11 @@ const App = () => {
             <Route path='/Doctor/Details/Add_Doctor' element={<Add_Doctor/>}/>
             <Route path='/Records' element={<Records/>}></Route>
             <Route path='/Records/Recodrsupload' element={<RecordsPage2/>}></Route>
+            <Route path='/Pharmacy/Add_Records' element={<Add_Records/>}></Route>
+            <Route path='/Pharmacy/Medicines' element={<Medicines/>}></Route>
+            <Route path='/Pharmacy/Medicines/Add_Medicines' element={<Add_Medicines/>}></Route>
+            <Route path='/Accounts' element={<Accounts/>}></Route>
+            <Route path='/Accounts/Account_Profile' element={<Account_Profile/>}></Route>
           </Routes>
         </Sidebar>
       </Router>

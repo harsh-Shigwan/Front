@@ -26,7 +26,7 @@ a {
 @tailwind components;
 @tailwind utilities;
 body {
-  @apply leading-[normal] m-0;
+@apply leading-[normal] m-0;
 }
 *,
 ::before,
