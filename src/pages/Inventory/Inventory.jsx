@@ -26,7 +26,7 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import Breadcrumb from "../../components/Breadcrumb";
 const Inventory = () => {
-  const API = "http://127.0.0.1:8000/api/patient/api/patients/";
+  const API = "http://127.0.0.1:8000/inventory/api/medicines/";
   const [myData, setMyData] = useState([]);
   const [isError, setIsError] = useState("");
 
@@ -149,12 +149,12 @@ const Inventory = () => {
                     <Table>
                       <TableHead className=" bg-indigo-100 w-full">
                         <TableRow>
-                          <TableCell>Patient ID</TableCell>
-                          <TableCell>Name </TableCell>
-                          <TableCell>Sex</TableCell>
-                          <TableCell>Blood</TableCell>
-                          <TableCell>Date Of Birth</TableCell>
-                          <TableCell>Contact Number</TableCell>
+                          <TableCell>ID</TableCell>
+                          <TableCell>Medicine Name </TableCell>
+                          <TableCell>Quantity</TableCell>
+                          <TableCell>Medicine manufacturer</TableCell>
+                          <TableCell>Expiration Date</TableCell>
+                          <TableCell>Amount</TableCell>
                           <TableCell>Action</TableCell>
                         </TableRow>
                       </TableHead>
@@ -168,13 +168,13 @@ const Inventory = () => {
                           item.FirstName.toLowerCase().includes(searh)
                         )
                           .map((user) => (
-                            <TableRow key={user.PatientID}>
-                              <TableCell>{user.PatientID}</TableCell>
-                              <TableCell>{user.FirstName} </TableCell>
-                              <TableCell>{user.Gender}</TableCell>
-                              <TableCell>{user.blood}</TableCell>
-                              <TableCell>{user.DOB}</TableCell>
-                              <TableCell>{user.phone}</TableCell>
+                            <TableRow key={user.id}>
+                              <TableCell>{user.id}</TableCell>
+                              <TableCell>{user.name} </TableCell>
+                              <TableCell>{user.quantity}</TableCell>
+                              <TableCell>{user.manufacturer}</TableCell>
+                              <TableCell>{user.expiration_date}</TableCell>
+                              <TableCell>{user.unit_price}</TableCell>
 
                               <div className="w-[190px] relative my-0 mx-[!important] left-[0px] bg-theme-white-default shadow-[0px_-1px_0px_#edf2f7_inset] h-[52px] overflow-hidden shrink-0 z-[22]">
                                 <img

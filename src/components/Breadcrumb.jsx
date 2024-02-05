@@ -15,7 +15,7 @@ const Breadcrumb = () => {
       <Link to={currentLink}>{crumbs}</Link></div>
     )
   })
-  console.log(location)
+
   return (
     <div className=' h-[80px]  bg-white   ml-0 pl-2 mt-2  w-full'>
     <Breadcrumbs separator="›" aria-label="breadcrumb"><Typography variant='h5'><div className='breadcrumbs'>{crumbs}</div></Typography></Breadcrumbs></div>

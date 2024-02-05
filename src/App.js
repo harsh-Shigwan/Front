@@ -29,6 +29,7 @@ import Equipment from './pages/Inventory/Equipment';
 import Add_Equipment from './pages/Inventory/Add_Equipment';
 import Accounts from './pages/Accounts/Accounts';
 import Account_Profile from './pages/Accounts/Account_Profile';
+import Recipt_Form from './pages/Accounts/Tabs/Recipt_Form';
 //import Medicine from './pages/Pharmacy/Medicine';
 const App = () => {
 
@@ -62,6 +63,7 @@ const App = () => {
             <Route path='/Pharmacy/Medicines/Add_Medicines' element={<Add_Medicines/>}></Route>
             <Route path='/Accounts' element={<Accounts/>}></Route>
             <Route path='/Accounts/Account_Profile' element={<Account_Profile/>}></Route>
+            <Route path='/Accounts/Account_Profile/Recipt_Voucher' element={<Recipt_Form/>}></Route>
           </Routes>
         </Sidebar>
       </Router>

@@ -24,7 +24,7 @@ import {
 
 import { Link, useNavigate } from "react-router-dom";
 import Breadcrumb from "../../../components/Breadcrumb";
-const   Recipt_Voucher = () => {
+const   Visit = () => {
   const API = "http://127.0.0.1:8000/api/patient/api/patients/";
   const [myData, setMyData] = useState([]);
   const [isError, setIsError] = useState("");
@@ -196,4 +196,4 @@ const   Recipt_Voucher = () => {
   );
 };
 
-export default  Recipt_Voucher;
+export default  Visit;

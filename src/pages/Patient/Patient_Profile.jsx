@@ -11,8 +11,9 @@ import Box from '@mui/material/Box';
 import Over_View from './Tabs/Over_View';
 import Visit from './Tabs/Visit';
 import Treatment_History from './Tabs/Treatment_History';
-import Lab_Investigation from './Tabs/Lab_Investigation';
 import Billing from './Tabs/Billing';
+import Lab_Investigation from './Tabs/Lab_Investigation';
+
 
 
 function CustomTabPanel(props) {
@@ -27,7 +28,7 @@ function CustomTabPanel(props) {
         {...other}
       >
         {value === index && (
-          <Box sx={{ p: 3 }}>
+          <Box sx={{ p: 5 }}>
             <Typography>{children}</Typography>
           </Box>
         )}
@@ -64,10 +65,12 @@ const Patient_Profile = () => {
           <Tab label="Over View" {...a11yProps(0)} />
           <Tab label="Visit" {...a11yProps(1)} />
           <Tab label="Tretment History" {...a11yProps(2)} />
+          <Tab label="Billing" {...a11yProps(3)} />
+          <Tab label="Lab" {...a11yProps(4)} />
         
-          <Tab label="Lab Investigation" {...a11yProps(3)} />
-          <Tab label="Billing" {...a11yProps(4)} />
-          <Tab label="Document Details" {...a11yProps(5)} />
+         
+      
+      
          
         </Tabs>
       </Box>
@@ -80,10 +83,15 @@ const Patient_Profile = () => {
       <CustomTabPanel value={value} index={2}>
         <Treatment_History/>
       </CustomTabPanel>
-      <customElements value={value} index={3}>
-      <Lab_Investigation/></customElements>
-      <customElements value={value} index={4}>
-      <Billing/></customElements>
+      <CustomTabPanel value={value} index={3}>
+    
+      <Billing/>
+    </CustomTabPanel>
+    <CustomTabPanel value={value} index={4}>
+    
+    <Lab_Investigation/>
+  </CustomTabPanel>
+   
     </Box>
     
     </div>

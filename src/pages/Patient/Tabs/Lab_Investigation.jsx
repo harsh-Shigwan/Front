@@ -23,8 +23,8 @@ import {
 } from "@mui/material";
 
 import { Link, useNavigate } from "react-router-dom";
-import Breadcrumb from "../../../components/Breadcrumb";
-const   Recipt_Voucher = () => {
+
+const  Lab_Investigation= () => {
   const API = "http://127.0.0.1:8000/api/patient/api/patients/";
   const [myData, setMyData] = useState([]);
   const [isError, setIsError] = useState("");
@@ -75,7 +75,7 @@ const   Recipt_Voucher = () => {
                 <div className="self-stretch relative h-[60px] overflow-hidden shrink-0">
                   <div className="absolute w-full top-[60px] right-[0px] left-[0px] bg-gray-200 box-border h-0 border-t-[1px] border-solid border-border-light" />
                   <div className="absolute top-[18px] left-[22px] text-[20px] leading-[24px] font-medium">
-                  Visit
+                  Lab Investigation
                   </div>
                   <input className="absolute top-[11px] left-[588px] rounded-[30px] bg-theme-white-default box-border w-[161px] h-[38px] border-[1px] border-solid border-black pl-5"  defaultValue={searh} onChange={(e)=>{ setSearch(e.target.value)}}/>
                   <div className="absolute top-[18px] left-[600px] h-[23.75px] flex flex-row  ml-28 items-start justify-start">
@@ -196,4 +196,4 @@ const   Recipt_Voucher = () => {
   );
 };
 
-export default  Recipt_Voucher;
+export default  Lab_Investigation;

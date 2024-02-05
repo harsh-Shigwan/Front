@@ -43,7 +43,7 @@ const   Recipt_Voucher = () => {
 
   const navigate = useNavigate();
   const handle = () => {
-    navigate("/Patient/Patient_Details/Add_Patient");
+    navigate("/Accounts/Account_Profile/Recipt_Voucher");
   };
   const navigate1 = useNavigate();
   const handle1 = () => {
@@ -85,7 +85,7 @@ const   Recipt_Voucher = () => {
                       src={search}
                     />
                   </div>
-                  <button className=" absolute flex flex-col justify-center px-5 py-2.5 text-xs font-semibold text-white whitespace-nowrap bg-blue-700 rounded-md max-w-[171px] left-[940px] mt-[10px] ">
+                  <button className=" absolute flex flex-col justify-center px-5 py-2.5 text-xs font-semibold text-white whitespace-nowrap bg-blue-700 rounded-md max-w-[171px] left-[940px] mt-[10px] " onClick={handle}>
                   <div className="flex gap-2 justify-between">
                     <img
                       loading="lazy"

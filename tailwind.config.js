@@ -8,7 +8,6 @@ module.exports = {
         "theme-white-default": "#fff",
         "text-body-muted": "#718096",
         "gray-200": "#edf2f9",
-        black: "#000",
         "theme-primary-soft": "#e1e8ff",
         "theme-primary-default": "#4c6fff",
         "text-body-light": "#425466",

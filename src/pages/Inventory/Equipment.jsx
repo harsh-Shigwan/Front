@@ -32,7 +32,7 @@ const Equipment = () => {
     const handle =()=>{
       navigate("/Inventory");
     }
-    const API = "http://127.0.0.1:8000/api/patient/api/patients/";
+    const API = "http://127.0.0.1:8000/inventory/api/equipment/";
     const [myData, setMyData] = useState([]);
     const [isError, setIsError] = useState("");
   
@@ -83,7 +83,7 @@ const Equipment = () => {
               src="https://cdn.builder.io/api/v1/image/assets/TEMP/eb0a99fc0ed66ee692bb13793133b769fb3944565bd01206a8e007e6e4b5e571?apiKey=8d6992485656477797592f8415f51272&"
               className="self-start w-2.5 aspect-[0.71] fill-blue-700"
             />
-            <div className="grow">Pharmacy Bills</div>
+            <div className="grow">Add Medicine</div>
           </div>
         </button>
         <div className="flex flex-col flex-1 justify-center px-5 py-2.5 text-white bg-blue-700 rounded-md border border-white border-solid">
@@ -93,7 +93,7 @@ const Equipment = () => {
               src="https://cdn.builder.io/api/v1/image/assets/TEMP/603a1aa13780c61e96c8fe8201e1955aff4d09be591e3cc08a41a491eff40f47?apiKey=8d6992485656477797592f8415f51272&"
               className="self-start w-3.5 aspect-square fill-white"
             />
-            <div className="grow">Medicine Bills</div>
+            <div className="grow">Add Equipment</div>
           </div>
         </div>
       </div>
@@ -158,13 +158,13 @@ const Equipment = () => {
                   <Table>
                     <TableHead className=" bg-indigo-100 w-full">
                       <TableRow>
-                        <TableCell>Patient ID</TableCell>
-                        <TableCell>Name </TableCell>
-                        <TableCell>Sex</TableCell>
-                        <TableCell>Blood</TableCell>
-                        <TableCell>Date Of Birth</TableCell>
-                        <TableCell>Contact Number</TableCell>
-                        <TableCell>Action</TableCell>
+                      <TableCell>ID</TableCell>
+                      <TableCell>Medicine Name </TableCell>
+                      <TableCell>Quantity</TableCell>
+                      <TableCell>Medicine manufacturer</TableCell>
+                      <TableCell>Purchase Date</TableCell>
+                      <TableCell>unit Price</TableCell>
+                      <TableCell>Action</TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
@@ -177,13 +177,13 @@ const Equipment = () => {
                         item.FirstName.toLowerCase().includes(searh)
                       )
                         .map((user) => (
-                          <TableRow key={user.PatientID}>
-                            <TableCell>{user.PatientID}</TableCell>
-                            <TableCell>{user.FirstName} </TableCell>
-                            <TableCell>{user.Gender}</TableCell>
-                            <TableCell>{user.blood}</TableCell>
-                            <TableCell>{user.DOB}</TableCell>
-                            <TableCell>{user.phone}</TableCell>
+                          <TableRow key={user.id}>
+                          <TableCell>{user.id}</TableCell>
+                          <TableCell>{user.name} </TableCell>
+                          <TableCell>{user.quantity}</TableCell>
+                          <TableCell>{user.manufacturer}</TableCell>
+                            <TableCell>{user.purchase_date}</TableCell>
+                            <TableCell>{user.unit_price}</TableCell>
 
                             <div className="w-[190px] relative my-0 mx-[!important] left-[0px] bg-theme-white-default shadow-[0px_-1px_0px_#edf2f7_inset] h-[52px] overflow-hidden shrink-0 z-[22]">
                               <img
