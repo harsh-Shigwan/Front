@@ -2,45 +2,42 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Breadcrumb from '../../../components/Breadcrumb';
 import axios from 'axios';
-
-const Recipt_Form = () => {
-  
-  const navigate = useNavigate();
-const [ formData , setFormData ]= useState({
-  amount_received:"",
-  name:"",
-  date_received:"",
-  description:""
-
-});
-const handleChange = (event)=>{
-  setFormData({
-    ...formData,
-    [event.target.name]: event.target.value
-  })
-}
-
-const handleSubmit = (event) => {
-  event.preventDefault();
-  console.log('Form Data Submitted:', formData);
-  axios.post('http://127.0.0.1:8000/api/accounts/api/receipt-vouchers/', formData)
-    .then((response) => {
-      console.log('API Response:', response.data);
-     
-    })
-    .catch((error) => {
-      console.error('API Error:', error);
-      console.log("Error response data:", error.response?.data);
-  
-    });
-};
-
+const CashBook_Form = () => {
+    const [ formData , setFormData ]= useState({
+        amount:"",
+          name:"",
+          date:"",
+          transaction_type:""
+        
+        });
+        const handleChange = (event)=>{
+          setFormData({
+            ...formData,
+            [event.target.name]: event.target.value
+          })
+        }
+        
+        const handleSubmit = (event) => {
+          event.preventDefault();
+          console.log('Form Data Submitted:', formData);
+          axios.post('http://127.0.0.1:8000/api/accounts/cashbooks/', formData)
+            .then((response) => {
+              console.log('API Response:', response.data);
+             
+            })
+            .catch((error) => {
+              console.error('API Error:', error);
+              console.log("Error response data:", error.response?.data);
+          
+            });
+        };
+        
   return (
-    <div> <Breadcrumb></Breadcrumb><form className="flex flex-col justify-center w-[1100px] px-7 py-12 bg-slate-50 max-md:px-5" onSubmit={handleSubmit}>
+    <div><Breadcrumb></Breadcrumb><form className="flex flex-col justify-center w-[1100px] px-7 py-0 bg-slate-50 max-md:px-5" onSubmit={handleSubmit}>
     <div className="flex flex-col pt-3 pb-12 mt-11 bg-white max-md:mt-10 max-md:max-w-full">
       <div className="flex gap-5 justify-between mx-6 max-md:flex-wrap max-md:mr-2.5 max-md:max-w-full">
         <div className="flex-auto my-auto text-xl font-medium leading-6 text-slate-800">
-          Payment Voucher{" "}
+         CashBook Details
         </div>
     
       </div>
@@ -59,9 +56,9 @@ const handleSubmit = (event) => {
       <div className="flex flex-col flex-1 py-0.5 max-md:max-w-full">
         <div className="text-sm text-slate-600 max-md:max-w-full">
           {" "}
-          Amount
+          Amount Paid
         </div>
-        <input className="justify-center items-start py-4 pr-16 pl-4 mt-2 text-base leading-4 text-gray-500 whitespace-nowrap rounded-md bg-slate-100 max-md:pr-5 max-md:max-w-full" name='amount_received' type='number' placeholder=' enter the amount' value={formData.amount_received} onChange={handleChange}>
+        <input className="justify-center items-start py-4 pr-16 pl-4 mt-2 text-base leading-4 text-gray-500 whitespace-nowrap rounded-md bg-slate-100 max-md:pr-5 max-md:max-w-full" name='amount' type='number' placeholder=' enter the amount' value={formData.amount} onChange={handleChange}>
        
         </input>
       </div>
@@ -72,17 +69,17 @@ const handleSubmit = (event) => {
       <div className="text-sm text-slate-600 max-md:max-w-full">
         Date
       </div>
-      <input className="justify-center items-start py-4 pr-16 pl-4 mt-3 text-base leading-4 text-gray-500 whitespace-nowrap rounded-md bg-slate-100 max-md:pr-5 max-md:max-w-full" name='date_received' type='date' 
-      placeholder=' enter the date' value={formData.date_received} onChange={handleChange} >
+      <input className="justify-center items-start py-4 pr-16 pl-4 mt-3 text-base leading-4 text-gray-500 whitespace-nowrap rounded-md bg-slate-100 max-md:pr-5 max-md:max-w-full" name='date' type='date' 
+      placeholder=' enter the date' value={formData.date} onChange={handleChange} >
        
       </input>
     </div>
     <div className="flex flex-col flex-1 py-0.5 max-md:max-w-full">
       <div className="text-sm text-slate-600 max-md:max-w-full">
         {" "}
-        description / Purpose
+        Transaction Type
       </div>
-      <input className="justify-center items-start py-4 pr-16 pl-4 mt-2 text-base leading-4 text-gray-500 whitespace-nowrap rounded-md bg-slate-100 max-md:pr-5 max-md:max-w-full" name='description' type='area' placeholder=' enter the description' value={formData.description} onChange={handleChange}>
+      <input className="justify-center items-start py-4 pr-16 pl-4 mt-2 text-base leading-4 text-gray-500 whitespace-nowrap rounded-md bg-slate-100 max-md:pr-5 max-md:max-w-full" name='transaction_type' type='area' placeholder=' enter the Transaction Type' value={formData.transaction_type} onChange={handleChange}>
      
       </input>
     </div>
@@ -101,4 +98,4 @@ const handleSubmit = (event) => {
   )
 }
 
-export default Recipt_Form
+export default CashBook_Form

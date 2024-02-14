@@ -25,7 +25,7 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import Breadcrumb from "../../../components/Breadcrumb";
 const   Recipt_Voucher = () => {
-  const API = "http://127.0.0.1:8000/api/patient/api/patients/";
+  const API = "http://127.0.0.1:8000/api/accounts/api/receipt-vouchers/";
   const [myData, setMyData] = useState([]);
   const [isError, setIsError] = useState("");
 
@@ -120,11 +120,11 @@ const   Recipt_Voucher = () => {
                         <TableHead className=" bg-indigo-100 w-full">
                           <TableRow>
                             <TableCell>Patient ID</TableCell>
-                            <TableCell>Name </TableCell>
-                            <TableCell>Sex</TableCell>
-                            <TableCell>Blood</TableCell>
-                            <TableCell>Date Of Birth</TableCell>
-                            <TableCell>Contact Number</TableCell>
+                            <TableCell>Amount Received </TableCell>
+                            <TableCell>Date OF Received</TableCell>
+                           
+                            
+                          
                             <TableCell>Action</TableCell>
                           </TableRow>
                         </TableHead>
@@ -138,13 +138,12 @@ const   Recipt_Voucher = () => {
                             item.FirstName.toLowerCase().includes(searh)
                           )
                             .map((user) => (
-                              <TableRow key={user.PatientID}>
-                                <TableCell>{user.PatientID}</TableCell>
-                                <TableCell>{user.FirstName} </TableCell>
-                                <TableCell>{user.Gender}</TableCell>
-                                <TableCell>{user.blood}</TableCell>
-                                <TableCell>{user.DOB}</TableCell>
-                                <TableCell>{user.phone}</TableCell>
+                              <TableRow key={user.id}>
+                                <TableCell>{user.id}</TableCell>
+                                <TableCell>{user.amount_received} </TableCell>
+                                <TableCell>{user.date_received}</TableCell>
+                           
+                               
 
                                 <div className="w-[190px] relative my-0 mx-[!important] left-[0px] bg-theme-white-default shadow-[0px_-1px_0px_#edf2f7_inset] h-[52px] overflow-hidden shrink-0 z-[22]">
                                   <img

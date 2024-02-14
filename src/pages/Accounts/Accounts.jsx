@@ -8,7 +8,7 @@ const Accounts = () => {
         navigate("/Accounts/Account_Profile")
     }
   return (
-    <div className=''><Breadcrumb></Breadcrumb>  <div className="flex  w-[1100px] flex-col px-9 py-0 bg-slate-50 max-md:px-5">
+    <div className=''><Breadcrumb></Breadcrumb>  <div className="flex  w-[1000px] flex-col px-9 py-0 bg-slate-50 max-md:px-5">
     <div className="px-0.5 mt-11 max-md:mt-10 max-md:max-w-full">
       <div className="flex gap-5 max-md:flex-col max-md:gap-0 max-md:">
         <div className="flex flex-col w-3/12 max-md:ml-0 max-md:w-full">

@@ -25,7 +25,7 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import Breadcrumb from "../../../components/Breadcrumb";
 const   Payment_Voucher = () => {
-  const API = "http://127.0.0.1:8000/api/patient/api/patients/";
+  const API = "http://127.0.0.1:8000/api/accounts/payment-vouchers/";
   const [myData, setMyData] = useState([]);
   const [isError, setIsError] = useState("");
 
@@ -43,7 +43,7 @@ const   Payment_Voucher = () => {
 
   const navigate = useNavigate();
   const handle = () => {
-    navigate("/Patient/Patient_Details/Add_Patient");
+    navigate("/Accounts/Account_Profile/Payment_Form");
   };
   const navigate1 = useNavigate();
   const handle1 = () => {
@@ -85,7 +85,7 @@ const   Payment_Voucher = () => {
                       src={search}
                     />
                   </div>
-                  <button className=" absolute flex flex-col justify-center px-5 py-2.5 text-xs font-semibold text-white whitespace-nowrap bg-blue-700 rounded-md max-w-[171px] left-[940px] mt-[10px] ">
+                  <button className=" absolute flex flex-col justify-center px-5 py-2.5 text-xs font-semibold text-white whitespace-nowrap bg-blue-700 rounded-md max-w-[171px] left-[940px] mt-[10px] " onClick={handle}>
                   <div className="flex gap-2 justify-between">
                     <img
                       loading="lazy"
@@ -120,11 +120,9 @@ const   Payment_Voucher = () => {
                         <TableHead className=" bg-indigo-100 w-full">
                           <TableRow>
                             <TableCell>Patient ID</TableCell>
-                            <TableCell>Name </TableCell>
-                            <TableCell>Sex</TableCell>
-                            <TableCell>Blood</TableCell>
-                            <TableCell>Date Of Birth</TableCell>
-                            <TableCell>Contact Number</TableCell>
+                            <TableCell>Amount Paid </TableCell>
+                            <TableCell>Date Paid</TableCell>
+                      
                             <TableCell>Action</TableCell>
                           </TableRow>
                         </TableHead>
@@ -138,13 +136,12 @@ const   Payment_Voucher = () => {
                             item.FirstName.toLowerCase().includes(searh)
                           )
                             .map((user) => (
-                              <TableRow key={user.PatientID}>
-                                <TableCell>{user.PatientID}</TableCell>
-                                <TableCell>{user.FirstName} </TableCell>
-                                <TableCell>{user.Gender}</TableCell>
-                                <TableCell>{user.blood}</TableCell>
-                                <TableCell>{user.DOB}</TableCell>
-                                <TableCell>{user.phone}</TableCell>
+                              <TableRow key={user.id}>
+                                <TableCell>{user.id}</TableCell>
+                                <TableCell>{user.amount_paid} </TableCell>
+                                <TableCell>{user.date_paid}</TableCell>
+                            
+                               
 
                                 <div className="w-[190px] relative my-0 mx-[!important] left-[0px] bg-theme-white-default shadow-[0px_-1px_0px_#edf2f7_inset] h-[52px] overflow-hidden shrink-0 z-[22]">
                                   <img

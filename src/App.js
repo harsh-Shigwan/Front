@@ -30,6 +30,14 @@ import Add_Equipment from './pages/Inventory/Add_Equipment';
 import Accounts from './pages/Accounts/Accounts';
 import Account_Profile from './pages/Accounts/Account_Profile';
 import Recipt_Form from './pages/Accounts/Tabs/Recipt_Form';
+import Payment_Form from './pages/Accounts/Tabs/Payment_Form';
+import CashBook_Form from './pages/Accounts/Tabs/CashBook_Form';
+import Account_Ledger_Form from './pages/Accounts/Tabs/Account_Ledger_Form';
+import PatientGraph from './pages/PatientGraph';
+import Staff_Mangement from './pages/Staff/Staff_Mangement';
+import Staff_Form from './pages/Staff/Staff_Form';
+import Add_Staf from './pages/Staff/Add_Staff';
+import Add_Staff from './pages/Staff/Add_Staff';
 //import Medicine from './pages/Pharmacy/Medicine';
 const App = () => {
 
@@ -64,6 +72,13 @@ const App = () => {
             <Route path='/Accounts' element={<Accounts/>}></Route>
             <Route path='/Accounts/Account_Profile' element={<Account_Profile/>}></Route>
             <Route path='/Accounts/Account_Profile/Recipt_Voucher' element={<Recipt_Form/>}></Route>
+            <Route path='/Accounts/Account_Profile/Payment_Form' element={<Payment_Form/>}></Route>
+            <Route path='/Accounts/Account_Profile/CashBook' element={<CashBook_Form/>}></Route>
+            <Route path='/Accounts/Account_Profile/Account_Ledger' element={<Account_Ledger_Form/>}></Route>
+            <Route path='/PatientGraph' element={<PatientGraph></PatientGraph>}></Route>
+            <Route path='/Staff' element={<Staff_Mangement/>}></Route>
+            <Route path='/Staff/Add_Staff_Member' element={<Staff_Form/>}></Route>
+            <Route path='/Staff/Add_Staff_Member/Add_Staff' element={<Add_Staff/>}></Route>
           </Routes>
         </Sidebar>
       </Router>
