@@ -152,7 +152,7 @@ const Medicines = () => {
                 </div>
               </button>
             </div>
-            <div className="self-stretch  h-[572px] overflow-hidden shrink-0  items-start justify-start text-text-body-light">
+            <div className="self-stretch   shrink-0  items-start justify-start text-text-body-light">
               <page>
                 <TableContainer ref={targetRef}>
                   <Table>

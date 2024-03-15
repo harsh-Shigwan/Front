@@ -125,6 +125,25 @@ export default function Doctor() {
                 </input>
               </div>
             </div>
+            <div className="flex gap-5 justify-between mt-8 max-md:flex-wrap max-md:max-w-full">
+            <div className="flex flex-col flex-1 py-0.5 max-md:max-w-full">
+              <div className="text-sm text-slate-600 max-md:max-w-full">
+                Date*
+              </div>
+              <input className="justify-center items-start py-4 pr-16 pl-4 mt-3 text-base leading-4 text-gray-500 whitespace-nowrap rounded-md bg-slate-100 max-md:pr-5 max-md:max-w-full" name='date' type='date' onChange={handleChange} value={formData.date} placeholder='enter date' >
+              
+              </input>
+            </div>
+            <div className="flex flex-col flex-1 py-0.5 max-md:max-w-full">
+              <div className="text-sm text-slate-600 max-md:max-w-full">
+                {" "}
+                Time Slot*
+              </div>
+              <input className="justify-center items-start py-4 pr-16 pl-4 mt-2 text-base leading-4 text-gray-500 whitespace-nowrap rounded-md bg-slate-100 max-md:pr-5 max-md:max-w-full" name='time_slot' type='time' onChange={handleChange} value={formData.time_slot} placeholder='enter the time slot'    >
+             
+              </input>
+            </div>
+          </div>
             <div className="flex flex-col items-stretch w-6/12 ml-5 max-md:w-full max-md:ml-0">
               <div className="items-stretch flex grow flex-col py-7 max-md:max-w-full max-md:mt-10">
                 <div className="text-slate-600 text-sm font-medium max-md:max-w-full">

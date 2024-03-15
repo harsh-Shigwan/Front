@@ -1,79 +1,169 @@
-import RecordsPage2 from './RecordsPage2';
-import { useNavigate,Route,Routes } from 'react-router-dom';
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import BillDetails from './BillDetails';
+import ItemList from './ItemList';
+
+import { jsPDF } from 'jspdf';
+
 import Breadcrumb from '../../components/Breadcrumb';
-// import './Records.css'
-
+import download from "../../Data/download.png";
  
-const Records = () => {
-  const navigate = useNavigate();
-  const navigateToContacts = () => {
+function Records() {
+    const [items, setItems] = React.useState([]);
  
-    navigate('/Records/Recodrsupload=');
-  }
-  return (
-    <div>
-   <div>
-   <Breadcrumb></Breadcrumb>
-   <div className="relative rounded-[22px] bg-white box-border w-[300px] h-[143px] overflow-hidden text-left text-sm text-blue-900 font-inter border-[1px] border-solid border-blue-500">
-      <div className="absolute top-[6px] left-[15px] text-[18px] leading-[150%] font-medium">
-        Head ache report
-      </div>
-      <div className="absolute top-[33px] left-[15px] leading-[150%] font-medium">
-        16/10/23
-      </div>
-      <div className="absolute top-[6px] left-[185px] rounded-[11px] bg-blue-500 box-border w-[84px] overflow-hidden flex flex-row items-center justify-center py-0.5 px-[3px] border-[1px] border-solid border-blue-500">
-        <div className="relative leading-[150%]">Dr. Ashish</div>
-      </div>
-    </div>
-   
+    const handleAddItem = (item) => {
+
+        setItems([...items, item]);
+        
+    };
  
-    <div className="relative rounded-[22px] top-[30px]  box-border w-[300px] h-[143px] overflow-hidden text-left text-sm text-blue-500 font-inter border-[1px] border-solid border-teal-300">
-      <div className="absolute top-[6px] left-[15px] text-[18px] leading-[150%] font-medium">
-        Head ache report
-      </div>
-      <div className="absolute top-[33px] left-[15px] leading-[150%] font-medium">
-        16/10/23
-      </div>
-      <div className="absolute top-[6px] left-[185px] rounded-[11px] bg-blue-500 box-border w-[84px] overflow-hidden flex flex-row items-center justify-center py-0.5 px-[3px] border-[1px] border-solid border-teal-400">
-        <div className="relative leading-[150%]">Dr. Ashish</div>
-      </div>
-    </div>
+    const handleDeleteItem = (index) => {
+        const updatedItems = [...items];
+        updatedItems.splice(index, 1);
+        setItems(updatedItems);
+    };
+ 
+    const calculateTotalAmount = () => {
+        return items.reduce(
+            (total, item) =>
+                total +
+                item.quantity *
+                item.price, 0);
+    };
+    
 
-    <div className="relative rounded-[22px] top-[60px] bg-white box-border w-[300px] h-[143px] overflow-hidden text-left text-sm text-blue-900 font-inter border-[1px] border-solid border-teal-300">
-      <div className="absolute top-[6px] left-[15px] text-[18px] leading-[150%] font-medium">
-        Head ache report
-      </div>
-      <div className="absolute top-[33px] left-[15px] leading-[150%] font-medium">
-        16/10/23
-      </div>
-      <div className="absolute top-[6px] left-[185px] rounded-[11px] bg-blue-500 box-border w-[84px] overflow-hidden flex flex-row items-center justify-center py-0.5 px-[3px] border-[1px] border-solid border-teal-400">
-        <div className="relative leading-[150%]">Dr. Ashish</div>
-      </div>
-    </div>
+    return (
+        <div className='  w-[1000px] ml-16 rounded-lg shadow-md mt-10 '>
+        <Breadcrumb></Breadcrumb>
+     
+       
+            <BillDetails onAddItem={handleAddItem} />
+            <ItemList items={items} 
+                onDeleteItem={handleDeleteItem}  total={calculateTotalAmount()} />
 
-   </div>
-      
-             
-             {/* <button type="button" class="rounded-none  hover:rounded-lg bg-blue-400 hover:bg-blue-600 Class text-3xl "  onClick={navigateToContacts}> Upload</button> */}
-            
-             <button
-                className="cursor-pointer [border:none] p-0 bg-[transparent] absolute top-[70px] left-[0px] w-[123px] h-[39px]"
-                autoFocus={true}
-                id="hcard"
-              >
-                <div className="absolute top-[0px] left-[1100px] rounded-[36px] bg-blue-500 box-border w-[123px] h-[39px] overflow-hidden border-[1px] border-solid border-teal-500" onClick={navigateToContacts} />
-                <div className="absolute top-[8px] left-[1130px] transparent-text  text-base leading-[150%] font-medium font-text-sm-font-semibold text-black text-left inline-block w-[101px]">
-                Upload
-                </div>
-              </button>
-
-
-              
-          
-    </div>
-  )
+        </div>
+    );
 }
+ 
+export default Records
 
-  
-export default Records;
+
+
+// import React, { useState, useEffect } from 'react';
+// import axios from 'axios';
+
+// const BillDetails = ({ onAddItem, onDeleteItem }) => {
+//     const [item, setItem] = useState('');
+//     const [quantity, setQuantity] = useState(1);
+//     const [price, setPrice] = useState(0);
+//     const [errorMessage, setErrorMessage] = useState('');
+//     const [itemsList, setItemsList] = useState([]);
+//     const [ PatientList , setPatientList]=useState([]);
+//     const [selectedItem, setSelectedItem] = useState('');
+//     const [selectedPrice, setSelectedPrice] = useState(0);
+    // const [ formData , setFormData]= useState({
+    //     name:"",
+    //     PatientID:"",
+    //     equipment:"",
+    //     date:"",
+    //     time_slot:"",
+    //     doctor:"",quantity_used:"",
+    //     usage_date:"",
+    //     unit_price:""
+     
+    //   }
+//       ); //1st
+//     useEffect(() => {
+//         // Fetch items from API
+//         axios.get('http://127.0.0.1:8000/inventory/api/equipment/')
+//             .then(response => {
+//                 setItemsList(response.data);
+//             })
+//             .catch(error => {
+//                 console.error('Error fetching items:', error);
+//                 console.error("Error response data:", error.response?.data);
+//             });
+//     }, []);
+//     useEffect(() => {
+//         // Fetch items from API
+//         axios.get('http://127.0.0.1:8000/patient/api/patients/')
+//             .then(response => {
+//                 setPatientList(response.data);
+//             })
+//             .catch(error => {
+//                 console.error('Error fetching items:', error);
+//                 console.error("Error response data:", error.response?.data);
+//             });
+//     }, []);
+
+//     const handleSubmit = (event) => {
+//         event.preventDefault();
+//         console.log('Form Data Submitted:', formData);
+//         axios.post('http://127.0.0.1:8000/inventory/api/patient-equipment-usage/', formData)
+//           .then((response) => {
+//             console.log('API Response:', response.data);
+//             navigate('/Inventory');
+//           })
+//           .catch((error) => {
+//             console.error('API Error:', error);
+//             console.log("Error response data:", error.response?.data);
+        
+//           });
+//       };
+
+//     const handleAddItem = () => {
+     
+//         const newItem = { item: selectedItem, quantity, price: selectedPrice };
+//         onAddItem(newItem);
+//         setItem('');
+//         setQuantity(1);
+//         setPrice(0);
+//         setErrorMessage('');
+//     };
+
+//     const handleItemChange = (event) => {
+//         const selectedItem = event.target.value;
+//         setSelectedItem(selectedItem);
+//         // Find price of selected item
+//         const selectedPrice = itemsList.find(item => item.name === selectedItem)?.unit_price || 0;
+//         setSelectedPrice(selectedPrice);
+//         setFormData({ ...formData, [event.target.name]: event.target.value }); //3rd
+//     };
+//   const handleChange=(event) =>{
+//     setFormData({ ...formData, [event.target.name]: event.target.value }); //3rd
+//   }
+     
+//     return (
+//         <div>
+//         <div className=' w-[1000px] bg-orange-200 ml-10' onSubmit={handleSubmit}>
+//             <label>Item:</label>
+//             <select value={selectedItem} onChange={handleItemChange} name='name'>
+//                 <option value="">Select Item</option>
+//                 {itemsList.map(item => (
+//                     <option key={item.id} >{item.name}</option>
+//                 ))}
+//             </select>
+
+
+//             <select value={PatientList} onChange={handleChange}  name='PatientID'>
+//             <option value="">Select Patient Id</option>
+//             {PatientList.map(item => (
+//                 <option key={item.PatientID} value={item.PatientID}>{item.PatientID}</option>
+//             ))}
+//         </select>
+
+
+//             <label>Quantity:</label>
+//             <input type="number"
+//                 value={quantity}
+//                 onChange={(e) => setQuantity(e.target.value)} />
+//             <label>Price:</label>
+//             <input type="number"
+//                 value={selectedPrice}
+//                 readOnly />
+//             <button className=' bg-blue-600 h-10 w-20 ' onClick={handleAddItem}>Add Item</button>
+//             <p style={{ color: 'red' }}>{errorMessage}</p>
+//         </div></div>
+//     );
+// };
+
+// export default BillDetails;

@@ -1,70 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-// const Tab1 = () => {
-   // const [ myData , setMyData] = useState([])
-   // let {PatientID} = useParams();
-   // useEffect(()=>{
-   //     getPatient()
-   // })
-
-   // const getPatient =()=>{
-   //     fetch("http://127.0.0.1:8000/api/patient/api/patients/").then( res =>{
-   //         if(res.ok){
-   //             return res.json()
-   //         }else {
-   //             console.log("Error")
-   //         }
-   //     }).then((data)=> {
-   //         const newPatient = data.find((item)=> item.PatientID ===parseInt(PatientID))
-   //         setMyData(newPatient)
-   //     }).catch((err)=> console.log(err))
-   // }
-  
-//   return (
-//     <div className=' bg-slate-300 text-neutral-950 h-full w-full'> {
-//         <div>
-//       <h1> { myData.FirstName}</h1>
-//         <h2>{myData.phone}</h2>
-//         <h2>{myData.DOB}</h2>
-//         <h2>{myData.Gender}</h2>
-//         </div>
-//     }</div>
-//   )
-// }
-
-// export default Tab1
 
 
-import { useNavigate } from 'react-router-dom';
 
 const Over_View = () => {
- const [ formData , setFormData]= useState({
-   patient :"",
-   case:"",
-   ward:"",
-     bed:"",
-     number:"",
-       doctor:"",
-       ward:"", 
-       date:"", 
-   
-
- }); //1st
- const navigate = useNavigate(); //2nd
- const handle =()=>{
-   navigate("/Patient/OPD")
- }
- const handleChange = (event) => {
-   setFormData({ ...formData, [event.target.name]: event.target.value }); //3rd
- };
- // type='text' name="Name" onChange={handleChange} placeholder='Enter full name'
- // onChange={handleChange} 
- const [selectedFile, setSelectedFile] = useState(null);
-
- const handleFileChange = (event) => {
-   const file = event.target.files[0];
-   setSelectedFile(file);
- };
 
  const [ myData , setMyData] = useState([])
  let {PatientID} = useParams();

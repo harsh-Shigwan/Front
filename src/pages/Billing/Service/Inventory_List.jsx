@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
-import Plus from "../Data/Plus.png";
-import download from "../Data/download.png";
-import search from "../Data/search.png";
-import edit from "../Data/edit.png";
+import Plus from "../../../Data/Plus.png";
+import download from "../../../Data/download.png";
+import search from "../../../Data/search.png";
+import edit from "../../../Data/edit.png";
 
 import generatePDF from "react-to-pdf";
 import {
@@ -23,9 +23,9 @@ import {
 } from "@mui/material";
 
 import { useNavigate } from "react-router-dom";
-import Breadcrumb from "../components/Breadcrumb";
-const Appointment = () => {
-  const API = "http://127.0.0.1:8000/api/patient/api/patients/";
+import Breadcrumb from "../../../components/Breadcrumb";
+const Inventory_List = () => {
+  const API = "http://127.0.0.1:8000/inventory/api/equipment/";
   const [myData, setMyData] = useState([]);
   const [isError, setIsError] = useState("");
 
@@ -43,7 +43,7 @@ const Appointment = () => {
 
   const navigate = useNavigate();
   const handle = () => {
-    navigate("");
+    navigate("/All_Inventory/Inventory_Listing");
   };
   const navigate1 = useNavigate();
   const handle1 = () => {
@@ -68,12 +68,12 @@ const Appointment = () => {
       <div className="w-[1000px] ml-[70px] mt-0 relative bg-whitesmoke h-[984px] flex flex-col items-center justify-start pt-0 px-[30px] pb-[30px] box-border text-left text-xs text-f2d3d font-table-body-heading">
         <div className="flex flex-col items-center justify-start pt-5 px-0 pb-0">
           <div className="h-[692px] flex flex-col items-start justify-start">
-            <div className="w-[1110px] relative bg-theme-white-default h-[692px] overflow-hidden shrink-0">
+            <div className="w-[1110px] relative bg-theme-white-default shrink-0">
               <div className="absolute top-[0px] left-[0px] w-[1110px] flex flex-col items-start justify-start">
                 <div className="self-stretch relative h-[60px] overflow-hidden shrink-0">
                   <div className="absolute w-full top-[60px] right-[0px] left-[0px] bg-gray-200 box-border h-0 border-t-[1px] border-solid border-border-light" />
                   <div className="absolute top-[18px] left-[22px] text-[20px] leading-[24px] font-medium">
-                  Appointment
+         Inventory List
                   </div>
                   <input className="absolute top-[11px] left-[588px] rounded-[30px] bg-theme-white-default box-border w-[161px] h-[38px] border-[1px] border-solid border-black" />
                   <div className="absolute top-[18px] left-[600px] h-[23.75px] flex flex-row  ml-28 items-start justify-start">
@@ -123,10 +123,10 @@ const Appointment = () => {
                           <TableRow>
                             <TableCell>Patient ID</TableCell>
                             <TableCell>Name </TableCell>
-                            <TableCell>Sex</TableCell>
-                            <TableCell>Blood</TableCell>
-                            <TableCell>Date Of Birth</TableCell>
-                            <TableCell>Contact Number</TableCell>
+                            <TableCell>Manufacturer</TableCell>
+                            <TableCell>Qty</TableCell>
+                            <TableCell>Unit Price</TableCell>
+                            <TableCell>Purchase Date</TableCell>
                             <TableCell>Action</TableCell>
                           </TableRow>
                         </TableHead>
@@ -137,13 +137,15 @@ const Appointment = () => {
                               page * rowperpage + rowperpage
                             )
                             .map((user) => (
-                              <TableRow key={user.PatientID}>
-                                <TableCell>{user.PatientID}</TableCell>
-                                <TableCell>{user.FirstName} </TableCell>
-                                <TableCell>{user.Gender}</TableCell>
-                                <TableCell>{user.blood}</TableCell>
-                                <TableCell>{user.DOB}</TableCell>
-                                <TableCell>{user.phone}</TableCell>
+                              <TableRow key={user.id}>
+                                <TableCell>{user.id}</TableCell>
+                                <TableCell>{user.name} </TableCell>
+                                <TableCell>{user.manufacturer}</TableCell>
+                                <TableCell>{user.quantity}</TableCell>
+                                <TableCell>{user.unit_price}</TableCell>
+                                <TableCell>{user.purchase_date}</TableCell>
+                             
+                          
 
                                 <div className="w-[190px] relative my-0 mx-[!important] left-[0px] bg-theme-white-default shadow-[0px_-1px_0px_#edf2f7_inset] h-[52px] overflow-hidden shrink-0 z-[22]">
                                   <img
@@ -196,4 +198,4 @@ const Appointment = () => {
   );
 };
 
-export default Appointment;
+export default Inventory_List;

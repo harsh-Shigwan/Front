@@ -100,6 +100,8 @@
 // };
 
 // export default PatientGraph;
+
+
 import React, { useEffect, useState } from "react";
 import {
   BarChart,

@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
-import Plus from "../../../Data/Plus.png";
-import download from "../../../Data/download.png";
-import search from "../../../Data/search.png";
-import edit from "../../../Data/edit.png";
+import Plus from "../../Data/Plus.png";
+import download from "../../Data/download.png";
+import search from "../../Data/search.png";
+import edit from "../../Data/edit.png";
 
 import generatePDF from "react-to-pdf";
 import {
@@ -22,10 +22,10 @@ import {
   Typography,
 } from "@mui/material";
 
-import { Link, useNavigate } from "react-router-dom";
-import Breadcrumb from "../../../components/Breadcrumb";
-const    Treatment_History = () => {
-  const API = "http://127.0.0.1:8000/api/patient/api/patients/";
+import { useNavigate } from "react-router-dom";
+import Breadcrumb from "../../components/Breadcrumb";
+const Appointment = () => {
+  const API = "http://127.0.0.1:8000/appointments/appointments/";
   const [myData, setMyData] = useState([]);
   const [isError, setIsError] = useState("");
 
@@ -43,41 +43,39 @@ const    Treatment_History = () => {
 
   const navigate = useNavigate();
   const handle = () => {
-    navigate("/Patient/Patient_Details/Add_Patient");
+    navigate("/Appointment/Appointment_form");
   };
   const navigate1 = useNavigate();
   const handle1 = () => {
-    navigate1(`/Patient/Patient_Details/Patient_Profile/${myData}`);
+    navigate1("/Patient/Patient_Details/Patient_Profile");
   };
 
   const handlechangepage = (event, newpage) => {
     setPage(newpage);
   };
   const handleRowPerPage = (event) => {
-    setRowPerPage(parseInt(event.target.value, 20));
+    setRowPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
   const [page, setPage] = useState(0);
-  const [rowperpage, setRowPerPage] = useState(20);
+  const [rowperpage, setRowPerPage] = useState(10);
 
   const targetRef = useRef();
-  
   const [searh, setSearch] = useState("");
-  //const urlName = user.FirstName.replace(/\s+/g, "-").toLowerCase();
   return (
     <div>
-      
-      <div className="w-[950px] ml-[70px] mt-0 relative bg-whitesmoke h-[984px] flex flex-col items-center justify-start pt-0 px-[30px] pb-[30px] box-border text-left text-xs text-f2d3d font-table-body-heading">
+      <Breadcrumb></Breadcrumb>
+      <div className="w-[1000px] ml-[70px] mt-0 relative bg-whitesmoke h-[984px] flex flex-col items-center justify-start pt-0 px-[30px] pb-[30px] box-border text-left text-xs text-f2d3d font-table-body-heading">
         <div className="flex flex-col items-center justify-start pt-5 px-0 pb-0">
           <div className="h-[692px] flex flex-col items-start justify-start">
-            <div className="w-[1110px] relative bg-theme-white-default  shrink-0">
+            <div className="w-[1110px] relative bg-theme-white-default shrink-0">
               <div className="absolute top-[0px] left-[0px] w-[1110px] flex flex-col items-start justify-start">
                 <div className="self-stretch relative h-[60px] overflow-hidden shrink-0">
                   <div className="absolute w-full top-[60px] right-[0px] left-[0px] bg-gray-200 box-border h-0 border-t-[1px] border-solid border-border-light" />
                   <div className="absolute top-[18px] left-[22px] text-[20px] leading-[24px] font-medium">
-                  Treatment History
+                  Appointment
                   </div>
-                  <input className="absolute top-[11px] left-[588px] rounded-[30px] bg-theme-white-default box-border w-[161px] h-[38px] border-[1px] border-solid border-black pl-5"  defaultValue={searh} onChange={(e)=>{ setSearch(e.target.value)}}/>
+                  <input className="absolute top-[11px] left-[588px] rounded-[30px] bg-theme-white-default box-border w-[161px] h-[38px] border-[1px] border-solid border-black" />
                   <div className="absolute top-[18px] left-[600px] h-[23.75px] flex flex-row  ml-28 items-start justify-start">
                     <img
                       className="w-5 relative h-5  overflow-hidden shrink-0"
@@ -85,16 +83,20 @@ const    Treatment_History = () => {
                       src={search}
                     />
                   </div>
-                  <button className="flex absolute left-[946px] mt-[10px] flex-col justify-center px-9 py-2.5 text-xs font-semibold text-white whitespace-nowrap bg-blue-700 rounded-md max-w-[156px]">
-                  <div className="flex gap-2 justify-between">
-                    <img
-                      loading="lazy"
-                      srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/caf89d1dbca3eb96caf4e980ceff983006da66a18d504e1b9d455afb2de26836?apiKey=8d6992485656477797592f8415f51272&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/caf89d1dbca3eb96caf4e980ceff983006da66a18d504e1b9d455afb2de26836?apiKey=8d6992485656477797592f8415f51272&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/caf89d1dbca3eb96caf4e980ceff983006da66a18d504e1b9d455afb2de26836?apiKey=8d6992485656477797592f8415f51272&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/caf89d1dbca3eb96caf4e980ceff983006da66a18d504e1b9d455afb2de26836?apiKey=8d6992485656477797592f8415f51272&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/caf89d1dbca3eb96caf4e980ceff983006da66a18d504e1b9d455afb2de26836?apiKey=8d6992485656477797592f8415f51272&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/caf89d1dbca3eb96caf4e980ceff983006da66a18d504e1b9d455afb2de26836?apiKey=8d6992485656477797592f8415f51272&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/caf89d1dbca3eb96caf4e980ceff983006da66a18d504e1b9d455afb2de26836?apiKey=8d6992485656477797592f8415f51272&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/caf89d1dbca3eb96caf4e980ceff983006da66a18d504e1b9d455afb2de26836?apiKey=8d6992485656477797592f8415f51272&"
-                      className="w-5 aspect-square"
-                    />
-                    <div className="grow">New Visit</div>
-                  </div>
-                </button>
+
+                  <button
+                    className="absolute top-[11px] left-[937px] rounded-md bg-theme-primary-dark w-[156px] flex flex-col items-start justify-start py-2.5 px-5  h-10 box-border text-theme-white-default"
+                    onClick={handle}
+                  >
+                    <div className="w-24 my-0 mx-[!important] absolute top-[10px] left-[30px] flex flex-row items-center justify-start gap-[8px] z-[0]">
+                      <img
+                        className="w-5 relative h-5 object-cover"
+                        alt=""
+                        src={Plus}
+                      />
+                      <div className="relative font-semibold">Add Patient</div>
+                    </div>
+                  </button>
                   <button
                     className="absolute top-[11px] left-[765px] rounded-md  h-10 bg-theme-white-default box-border w-[156px] flex flex-col items-start justify-start py-2.5 px-5 text-theme-primary-dark border-[1px] border-solid border-theme-primary-dark"
                     onClick={() =>
@@ -120,11 +122,11 @@ const    Treatment_History = () => {
                         <TableHead className=" bg-indigo-100 w-full">
                           <TableRow>
                             <TableCell>Patient ID</TableCell>
-                            <TableCell>Name </TableCell>
-                            <TableCell>Sex</TableCell>
-                            <TableCell>Blood</TableCell>
-                            <TableCell>Date Of Birth</TableCell>
-                            <TableCell>Contact Number</TableCell>
+                            <TableCell>Date </TableCell>
+                            <TableCell>Time Slot</TableCell>
+                            <TableCell>Status</TableCell>
+                            <TableCell>Patient ID</TableCell>
+                            <TableCell>Doctor ID</TableCell>
                             <TableCell>Action</TableCell>
                           </TableRow>
                         </TableHead>
@@ -133,18 +135,15 @@ const    Treatment_History = () => {
                             .slice(
                               page * rowperpage,
                               page * rowperpage + rowperpage
-                            ).filter((item)=>
-                            searh.toLowerCase() === '' ||
-                            item.FirstName.toLowerCase().includes(searh)
-                          )
+                            )
                             .map((user) => (
-                              <TableRow key={user.PatientID}>
-                                <TableCell>{user.PatientID}</TableCell>
-                                <TableCell>{user.FirstName} </TableCell>
-                                <TableCell>{user.Gender}</TableCell>
-                                <TableCell>{user.blood}</TableCell>
-                                <TableCell>{user.DOB}</TableCell>
-                                <TableCell>{user.phone}</TableCell>
+                              <TableRow key={user.id}>
+                                <TableCell>{user.id}</TableCell>
+                                <TableCell>{user.date} </TableCell>
+                                <TableCell>{user.time_slot}</TableCell>
+                                <TableCell>{user.status}</TableCell>
+                                <TableCell>{user.patient}</TableCell>
+                                <TableCell>{user.doctor}</TableCell>
 
                                 <div className="w-[190px] relative my-0 mx-[!important] left-[0px] bg-theme-white-default shadow-[0px_-1px_0px_#edf2f7_inset] h-[52px] overflow-hidden shrink-0 z-[22]">
                                   <img
@@ -157,9 +156,10 @@ const    Treatment_History = () => {
                                     alt=""
                                     src={edit}
                                   />
-                                  <Link
+                                  <button
                                     className="absolute top-[13px] left-[71px] rounded flex flex-col items-center justify-start py-2 px-4 border-[1px] border-solid border-royalblue"
-                                    to={`/Patient/Patient_Details/${user.PatientID}`}                                 >
+                                    onClick={handle1}
+                                  >
                                     <div className="flex flex-row items-center justify-start gap-[6px]">
                                       <img
                                         className="w-2.5 relative h-2.5 hidden"
@@ -170,7 +170,7 @@ const    Treatment_History = () => {
                                         View
                                       </div>
                                     </div>
-                                  </Link>
+                                  </button>
                                 </div>
                               </TableRow>
                             ))}
@@ -196,4 +196,4 @@ const    Treatment_History = () => {
   );
 };
 
-export default  Treatment_History;
+export default Appointment;

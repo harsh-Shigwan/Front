@@ -1,12 +1,55 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios';
 import Breadcrumb from '../../components/Breadcrumb'
 import { useNavigate } from 'react-router-dom'
 
 const Accounts = () => {
+  const [inventoryData, setInventoryData] = useState([]);
+  const [totalValue, setTotalValue] = useState(0);
+  const [totalCost, setTotalCost] = useState(0);
     const navigate = useNavigate();
     const handle =()=>{
         navigate("/Accounts/Account_Profile")
     }
+    useEffect(() => {
+      axios.get('http://127.0.0.1:8000/inventory/api/equipment/')
+          .then(response => {
+              setInventoryData(response.data);
+              calculateTotal(response.data);
+          })
+          .catch(error => {
+              console.error('Error fetching inventory data:', error);
+          });
+
+          axios.get('http://127.0.0.1:8000/inventory/api/patient-equipment-usage/')
+          .then(response => {
+              const equipmentData = response.data;
+              let sum = 0;
+              equipmentData.forEach(item => {
+                  const quantityUsed = parseInt(item.quantity_used);
+                  const unitPrice = parseFloat(item.unit_price);
+                  const product = quantityUsed * unitPrice;
+                  sum += product;
+              });
+              setTotalCost(sum);
+          })
+          .catch(error => {
+              console.error('Error fetching equipment data:', error);
+          });
+  }, []);
+  const calculateTotal = (data) => {
+    let total = 0;
+    data.forEach(item => {
+        const quantity = parseInt(item.quantity);
+        const unitPrice = parseFloat(item.unit_price);
+        total += quantity * unitPrice;
+    });
+    setTotalValue(total);
+};
+
+const total_Profit = totalValue - totalCost;
+
+//console.log(total_Profit)
   return (
     <div className=''><Breadcrumb></Breadcrumb>  <div className="flex  w-[1000px] flex-col px-9 py-0 bg-slate-50 max-md:px-5">
     <div className="px-0.5 mt-11 max-md:mt-10 max-md:max-w-full">
@@ -54,7 +97,7 @@ const Accounts = () => {
                 Total Expenditure
               </div>
               <div className="mt-1.5 text-2xl font-bold tracking-wide text-zinc-800">
-                59,000.00
+               {totalValue.toFixed(2)}
               </div>
             </div>
           </div>
@@ -78,7 +121,7 @@ const Accounts = () => {
                 Total Profit
               </div>
               <div className="mt-1.5 text-2xl font-bold tracking-wide text-zinc-800">
-                10,000.00
+               {total_Profit.toFixed(2)}
               </div>
             </div>
           </div>

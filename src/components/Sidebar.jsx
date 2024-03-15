@@ -56,8 +56,8 @@ const routes = [
     icon: <FaBookMedical />,   
  
   },{
-    path:"/Records",
-    name:"Records",
+    path:"/Invoice_Generator",
+    name:"Billing",
     icon:<AiFillAppstore/>
   },
   {

@@ -50,6 +50,7 @@ module.exports = {
         gray1: "rgba(255, 255, 255, 0.44)",
         "theme-secondary-default": "#e4ecf7",
         "theme-dark-dark": "#101225",
+        "btn":"#3754DB"
       }, spacing: {},
       fontFamily: {
         "table-body-heading": "Inter",

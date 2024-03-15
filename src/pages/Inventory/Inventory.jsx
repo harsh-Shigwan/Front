@@ -96,7 +96,7 @@ const Inventory = () => {
       <div className="w-[1000px] ml-[70px] mt-0 relative bg-whitesmoke h-[984px] flex flex-col items-center justify-start pt-0 px-[30px] pb-[30px] box-border text-left text-xs text-f2d3d font-table-body-heading">
       <div className="flex flex-col items-center justify-start pt-5 px-0 pb-0">
         <div className="h-[692px] flex flex-col items-start justify-start">
-          <div className="w-[1110px] relative bg-theme-white-default h-[692px] overflow-hidden shrink-0">
+          <div className="w-[1110px] relative bg-theme-white-default  shrink-0">
             <div className="absolute top-[0px] left-[0px] w-[1110px] flex flex-col items-start justify-start">
               <div className="self-stretch relative h-[60px] overflow-hidden shrink-0">
                 <div className="absolute w-full top-[60px] right-[0px] left-[0px] bg-gray-200 box-border h-0 border-t-[1px] border-solid border-border-light" />
@@ -143,7 +143,7 @@ const Inventory = () => {
                   </div>
                 </button>
               </div>
-              <div className="self-stretch  h-[572px] overflow-hidden shrink-0  items-start justify-start text-text-body-light">
+              <div className="self-stretch   shrink-0  items-start justify-start text-text-body-light">
                 <page>
                   <TableContainer ref={targetRef}>
                     <Table>

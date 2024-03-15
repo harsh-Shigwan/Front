@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import "./App.css";
 import { BrowserRouter as Router , Routes , Route} from "react-router-dom"
 import Patient from './pages/Patient';
-import Appointment from './pages/Appointment';
+import Appointment from './pages/Appointment/Appointment';
 import Doctor from './pages/Doctor/Doctor';
 import Inventory from './pages/Inventory/Inventory';
 import Pharmacy from './pages/Pharmacy/Pharmacy';
@@ -18,7 +18,7 @@ import Detail from './pages/Doctor/Details';
 import Details from './pages/Doctor/Details';
 import Add_Doctor from './pages/Doctor/Add_Doctor';
 import Records from './pages/Records/Records';
-import RecordsPage2 from './pages/Records/RecordsPage2';
+//import RecordsPage2 from './pages/Records/RecordsPage2';
 import IPD_Form from './pages/Patient/IPD_Form';
 import Home from './pages/Patient/Home';
 import Add_Records from './pages/Pharmacy/Add_Records';
@@ -38,6 +38,14 @@ import Staff_Mangement from './pages/Staff/Staff_Mangement';
 import Staff_Form from './pages/Staff/Staff_Form';
 import Add_Staf from './pages/Staff/Add_Staff';
 import Add_Staff from './pages/Staff/Add_Staff';
+import Appointment_form from './pages/Appointment/Appointment_form';
+import Inventory_List from './pages/Billing/Service/Inventory_List';
+import Payment from './pages/Billing/Payment/Payment';
+import Invoice from './pages/Billing/Invoice/Invoice';
+import Service from './pages/Billing/Service/Service';
+import Doctor_Profile from './pages/Doctor/Doctor_Profile';
+import IPD_View from './pages/Patient/IPD_View';
+import OPD_View from './pages/Patient/OPD_View';
 //import Medicine from './pages/Pharmacy/Medicine';
 const App = () => {
 
@@ -48,24 +56,31 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />}></Route>
             <Route path="/Appointment" element={<Appointment />}></Route>
-            <Route path="/Doctor" element={<Doctor />}></Route>
+            {/*Inventory */}
             <Route path="/Inventory" element={<Inventory />}></Route>
+            <Route path="/All_Inventory" element={< Inventory_List />}></Route>
             <Route path="/Inventory/Equipment" element={<Equipment />}></Route>
             <Route path="/Inventory/Equipment/Add_Equipment" element={<Add_Equipment/>}></Route>
-            <Route path="/Inventory/Add_Medicine_Inventory" element={<Add_Medicine_Inventory />}></Route>
-            <Route path="/Pharmacy" element={<Pharmacy />}></Route>
-            <Route path="/Report" element={<Report />}></Route>
+            <Route path='/Inventory/Add_Medicine_Inventory' element={<Add_Medicine_Inventory/>}></Route>
+            {/*Patient*/}
             <Route path="/Patient/OPD" element={<OPD />}></Route>
+            {/*IPD*/}
             <Route path="/Patient/IPD" element={<IPD />}></Route>
             <Route path="/Patient/IPD/Add_Patient" element={<IPD_Form />}></Route>
+            <Route path="/Patient/IPD/Add_Patient/IPD_View/:admission_id" element={<IPD_View />}></Route>
+            <Route path="/Patient/OPD/Add_Patient/OPD_View/:visit_id" element={<OPD_View />}></Route>
             <Route path="/Patient/OPD/AddPatient" element={<OPD_New />}></Route>
             <Route path='/Patient/Patient_Details' element={<Patient_Detail/>}></Route>
             <Route path='/Patient/Patient_Details/Add_Patient' element={<Add_Patient/>}></Route>
             <Route path='/Patient/Patient_Details/:PatientID' element={<Patient_Profile/>}></Route>
+            {/* Doctor*/}
+            <Route path="/Doctor" element={<Doctor />}></Route>
             <Route path='/Doctor/Details' element={<Details/>}/>
             <Route path='/Doctor/Details/Add_Doctor' element={<Add_Doctor/>}/>
-            <Route path='/Records' element={<Records/>}></Route>
-            <Route path='/Records/Recodrsupload' element={<RecordsPage2/>}></Route>
+            <Route path='/Doctor/Details/Doctor_Profile/:DoctorID' element={<Doctor_Profile/>}/>
+          {/*Invoice */}
+            <Route path='/Invoice_Generator' element={<Records/>}></Route>
+          
             <Route path='/Pharmacy/Add_Records' element={<Add_Records/>}></Route>
             <Route path='/Pharmacy/Medicines' element={<Medicines/>}></Route>
             <Route path='/Pharmacy/Medicines/Add_Medicines' element={<Add_Medicines/>}></Route>
@@ -79,6 +94,12 @@ const App = () => {
             <Route path='/Staff' element={<Staff_Mangement/>}></Route>
             <Route path='/Staff/Add_Staff_Member' element={<Staff_Form/>}></Route>
             <Route path='/Staff/Add_Staff_Member/Add_Staff' element={<Add_Staff/>}></Route>
+            <Route path='/Appointment' element={<Appointment></Appointment>}></Route>
+            <Route path='Appointment/Appointment_form' element={<Appointment_form/>}></Route>
+            {/*Billing*/}
+            <Route path='/payment' element={<Payment/>}></Route>
+            <Route path='/invoice' element={<Invoice/>}></Route>
+            <Route path='/All_Inventory/Inventory_Listing' element={<Service/>}></Route>
           </Routes>
         </Sidebar>
       </Router>
