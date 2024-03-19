@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Breadcrumb from "../../components/Breadcrumb";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
-const OPD_New = () => {
+const OPD_edit = () => {
+  const { pk } = useParams();
+
   const [patient_id, setPatientId] = useState("");
   const [doctor_id, setDoctorId] = useState("");
   // const [department, setDepartment] = useState('');
@@ -22,8 +24,8 @@ const OPD_New = () => {
 
     try {
       // Use Axios to send a POST request with the form data
-      const response = await axios.post(
-        "http://127.0.0.1:8000/opd/api/opd-register/",
+      const response = await axios.put(
+        `http://127.0.0.1:8000/opd/api/opd-register/${pk}/`,
         { patient_id, doctor_id, department: formData.department }
       );
       console.log("API Response:", response.data);
@@ -109,7 +111,7 @@ const OPD_New = () => {
 
           <button
             type="submit"
-            className="bg-sky-500 h-10 w-28 rounded-xl  pt-1 mt-5"
+            className="bg-blue-700 h-10 w-28 rounded-xl text-white font-semibold text-[15px] pt-1 mt-5"
           >
             Submit
           </button>
@@ -130,4 +132,4 @@ const OPD_New = () => {
   );
 };
 
-export default OPD_New;
+export default OPD_edit;
